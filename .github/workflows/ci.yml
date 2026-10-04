@@ -1,0 +1,26 @@
+name: Task Manager CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify application files
+        run: |
+          test -f README.md
+          test -f index.html
+          echo "All required files are present."
+
+      - name: CI completed
+        run: echo "Task Manager CI pipeline executed successfully."
